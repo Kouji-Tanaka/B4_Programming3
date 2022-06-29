@@ -2,10 +2,10 @@
 構造体を定義して以下の行列を計算する関数を作成する。
 
 $$
-x=\begin{pmatrix}5\\7\end{pmatrix}
-\quad y=\begin{pmatrix}2\\3\end{pmatrix}
-\quad A=\begin{pmatrix}1 & 3\\4 & 2\end{pmatrix}
-\quad B=\begin{pmatrix}2 & 1\\3 & 2\end{pmatrix}
+x = \begin{pmatrix} 5 \\ 7 \end{pmatrix}
+\quad y = \begin{pmatrix} 2 \\ 3 \end{pmatrix}
+\quad A = \begin{pmatrix} 1 & 3 \\ 4 & 2 \end{pmatrix}
+\quad B = \begin{pmatrix} 2 & 1 \\ 3 & 2 \end{pmatrix}
 $$
 
 ## (1) $x + y$
