@@ -8,7 +8,7 @@ LDFLAGS :=
 LDFLIBS :=
 
 main.out : src/main.c src/sub.c
-	$(CC) $(CFLAGS) src/main.c src/sub.c -lm
+	$(CC) $(CFLAGS) src/main.c src/sub.c
 	@echo "exported as \""$@"\""
 
 clean :

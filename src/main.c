@@ -1,70 +1,72 @@
 #include <stdio.h>
-#include <math.h>
 #include "../include/sub.h"
 
-#define B_1 1.9
-#define B_2 2.5
-#define X_0 2.1
-#define N 100
-
-void Bisection(double a, double b);
-void Newton_Rapson(double x_0);
+void prt_mat(matrix a);
+void prt_sca(double a);
 
 int main(void)
 {
-    Bisection(B_1, B_2);
-    Newton_Rapson(X_0);
+    matrix x, y, A, B;
+    
+    init_matrix(x);
+    init_matrix(y);
+    init_matrix(A);
+    init_matrix(B);
+
+    x.row=2, x.col=1, x.elem[0][0]=5, x.elem[1][0]=7;
+    y.row=2, y.col=1, y.elem[0][0]=2, y.elem[1][0]=3;
+    A.row=2, A.col=2, A.elem[0][0]=1, A.elem[1][0]=4, A.elem[0][1]=3, A.elem[1][1]=2;
+    B.row=2, B.col=2, B.elem[0][0]=2, B.elem[1][0]=3, B.elem[0][1]=1, B.elem[1][1]=2;
+
+    
+    printf("(1)");
+    prt_mat(sum(x, y));
+    printf("(2)");
+    prt_sca(inner_product(x, y));
+    printf("(3)");
+    prt_mat(product(transpose(x), y));
+    printf("(4)");
+    prt_mat(product(A, x));
+    printf("(5)");
+    prt_mat(product(A, B));
+    printf("(6)");
+    prt_mat(product(B, A));
+    printf("(7)");
+    prt_mat(inverse(B));
+    printf("(8)");
+    prt_mat(transpose(product(A, B)));
 
     return 0;
 }
 
-void Bisection(double a, double b)
+void prt_mat(matrix a)
 {
-    double c;
-
-    if(F(a)==0)
+    if(a.row!=0)
     {
-        printf("Bisection:\tans=%.10f\n", a);
-    }
-    else if(F(b)==0)
-    {
-        printf("Bisection:\tans=%.10f\n", b);
-    }
-    else if(F(a)*F(b)>0)
-    {
-        printf("Bisection:\tError\n");
+        for(int i=0; i<a.row; i++)
+        {
+            for(int j=0; j<a.col; j++)
+            {
+                printf("\t%f", a.elem[i][j]);
+            }
+            printf("\n");
+        }
+        printf("\n");
     }
     else
     {
-        for (int i=0;i<N;i++)
-        {
-            c = (a + b)/2.0;
-            if(F(a)*F(c)<0)
-            {
-                b = c;
-            }
-            else
-            {
-                a = c;
-            }
-        }
-
-        printf("Bisection:\tans=%.10f\n", c);
+        printf("Error\n\n");
     }
 }
 
-void Newton_Rapson(double x_0)
+void prt_sca(double a)
 {
-    double x_1;
-    for (int i=0;i<N;i++)
+    if(a)
     {
-        if(abs(dF(x_0))<1.0e-10)
-        {
-            printf("Newton-Rapson:\tError\n");
-            return;
-        }
-        x_1 = x_0 - F(x_0)/dF(x_0);
-        x_0 = x_1;
+        printf("\t%f\n\n", a);
     }
-    printf("Newton-Rapson:\tans=%.10f\n", x_1);
+    else
+    {
+        printf("Error\n\n");
+    }
 }
